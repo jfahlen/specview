@@ -1,0 +1,5 @@
+fastapi>=0.115
+uvicorn[standard]>=0.32
+earthaccess>=0.12
+h5py>=3.12
+numpy>=2.0

@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+# Secrets / local env
+.env
+.env.*
+.netrc
+*.pem
+# Data / cache
+server/data/
+*.nc
+*.memmap
+# macOS / Xcode
+.DS_Store
+ios/**/xcuserdata/
+ios/**/DerivedData/
+*.xcuserstate

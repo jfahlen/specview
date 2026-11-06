@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: specview-api
+    region: oregon
+    runtime: python
+    plan: starter            # bump to standard/pro (4–8 GB) + disk in Phase 1
+    rootDir: server
+    buildFilter:
+      paths: ["server/**"]
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --loop uvloop --http httptools
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      # Secrets: set in the Render dashboard, never committed.
+      - key: EARTHDATA_USERNAME
+        sync: false
+      - key: EARTHDATA_PASSWORD
+        sync: false
+      - key: SPIKE_TOKEN       # static bearer token guarding /spike/* during Phase 0
+        sync: false
